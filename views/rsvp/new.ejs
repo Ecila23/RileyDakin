@@ -1,0 +1,55 @@
+<% include ../partials/header %> 
+
+<div class="container">
+  <form action="/rsvp" method="POST">
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" type="text" name="name" placeholder="e.g. Alex Smith">
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" type="email" name="email" placeholder="e.g. alexsmith@gmail.com">
+      </div>
+    </div>
+    
+    <div class="field">
+        <label class="label">Attendance</label>
+        <div class="control">
+          <div class="select">
+            <select name="attending">
+              <option value="Attending">I'll be there!</option>
+              <option value="Evening only">Evening Only</option>
+              <option value="Not attending">Sorry, I can't make it!</option>
+            </select>
+          </div>
+        </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Dietary Requirements</label>
+      <div class="control">
+        <input class="input" type="text" name="diet" placeholder="e.g. Gluten Free">
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Song Requests</label>
+      <div class="control">
+        <input class="input" type="text" name="song" placeholder="e.g. Beautiful Crazy by Luke Combs">
+      </div>
+    </div>
+    
+    <div class="control">
+      <div class="control">
+        <div><input class="button is-link" type="submit" value="Send"/></div>
+      </div>
+    </div>
+  </form>
+  <a class="button is-text" href="/">I've already RSVP'd*</a>
+</div>
+
+<% include ../partials/footer %> 
