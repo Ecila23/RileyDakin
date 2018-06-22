@@ -1,7 +1,30 @@
 <% include ./partials/header %> 
 
 <h1>HOMEPAGE</h1>
-<h2>23rd May 2020</h2>
-<p>[COUNTDOWN TIMER]</p>
+<h2>16th May 2020</h2>
+<p id="countdown"></p>
+
+<script>
+var countDownDate = new Date("May 16, 2020 15:00:00").getTime();
+
+var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("countdown").innerHTML = days + " days " + hours + " hours "
+  + minutes + " minutes " + seconds + " seconds until the big day!";
+
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+
 
 <% include ./partials/footer %>

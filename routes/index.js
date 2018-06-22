@@ -86,11 +86,49 @@ router.get("/rsvp/:id", function(req, res){
         if(err){
             console.log(err);
         } else {
-            console.log(foundRsvp)
+            console.log(foundRsvp);
             //render show template with that campground
             res.render("rsvp/show", {rsvp: foundRsvp});
         }
     });
+});
+
+// edit
+router.get("/rsvp/:id/edit", function(req, res) {
+    console.log(req.params.id);
+    Rsvp.findById(req.params.id, function(err, foundRsvp){
+        if(err){
+            console.log(err);
+            res.redirect("/rsvp");
+        } else {
+            res.render("rsvp/edit", {rsvp: foundRsvp});
+        }
+    });
+});
+
+//update
+router.put("/rsvp/:id", function(req, res){
+    Rsvp.findByIdAndUpdate(req.params.id, req.body.rsvp, function(err, updatedRsvp){
+        if(err){
+            res.redirect("/rsvp");
+        } else {
+            req.flash("success", "Successfully updated rsvp!");
+            res.redirect("/rsvp/" + req.params.id);
+        }
+    });
+});
+
+//destroy
+router.delete("/rsvp/:id", function(req, res){
+   Rsvp.findByIdAndRemove(req.params.id, function(err){
+      if(err){
+          console.log(err);
+          res.redirect("/rsvp");
+      } else {
+          req.flash("success", "Successfully deleted rsvp!");
+          res.redirect("/rsvp");
+      }
+   });
 });
 
 
