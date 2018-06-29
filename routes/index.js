@@ -1,6 +1,9 @@
 var express = require("express");
 var router  = express.Router();
 var Rsvp = require("../models/rsvp");
+var passport = require("passport");
+var User = require("../models/user");
+var middleware = require("../middleware");
 
 //root route
 router.get("/", function(req, res){
@@ -39,14 +42,55 @@ router.get("/blog", function(req, res){
     res.render("blog");
 });
  
+
+// login routes 
+// show register form
+router.get("/register", function(req, res){
+   res.render("register"); 
+});
+
+//handle sign up logic
+router.post("/register", function(req, res){
+    var newUser = new User({username: req.body.username});
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function(){
+            res.redirect("/rsvp/new");
+        });
+    });
+});
+
+//show login form
+router.get("/login", function(req, res){
+   res.render("login"); 
+});
+
+//handling login logic
+router.post("/login", passport.authenticate("local", 
+    {
+        successRedirect: "/rsvp",
+        failureRedirect: "/login"
+    }), function(req, res){
+});
+
+// logout route
+router.get("/logout", function(req, res){
+   req.logout();
+   res.redirect("/");
+});
+ 
+ 
 //rsvp routes
 //new - show form to create new rsvp 
-router.get("/rsvp/new", function(req, res){
+router.get("/rsvp/new", middleware.isLoggedIn, function(req, res){
     res.render("rsvp/new");
 });
 
 //create - create new rsvp
-router.post("/rsvp", function(req, res){
+router.post("/rsvp", middleware.isLoggedIn,function(req, res){
     // get data from form and add to rsvps array
     var name = req.body.name;
     var email = req.body.email;
@@ -55,21 +99,17 @@ router.post("/rsvp", function(req, res){
     var song = req.body.song;
     
     var newRsvp = {name: name, email: email, attending: attending, diet: diet, song: song};
-    // Create a new rsvp and save to DB
     Rsvp.create(newRsvp, function(err, newlyCreated){
         if(err){
             console.log(err);
         } else {
-            //redirect back to home page
-            req.flash("success", "RSVP sent!");
             res.redirect("/");
         }
     });
 });
 
 //index - show all rsvps (admin only)
-router.get("/rsvp", function(req, res){
-    // Get all rsvps from DB
+router.get("/rsvp", middleware.isLoggedIn, function(req, res){
     Rsvp.find({}, function(err, allRsvps){
        if(err){
            console.log(err);
@@ -80,14 +120,12 @@ router.get("/rsvp", function(req, res){
 });
 
 // show - shows more info about one rsvp
-router.get("/rsvp/:id", function(req, res){
-    //find the rsvp with provided ID
+router.get("/rsvp/:id", middleware.checkRsvpOwnership, function(req, res){
     Rsvp.findById(req.params.id).exec(function(err, foundRsvp){
         if(err){
             console.log(err);
         } else {
             console.log(foundRsvp);
-            //render show template with that campground
             res.render("rsvp/show", {rsvp: foundRsvp});
         }
     });
@@ -112,7 +150,6 @@ router.put("/rsvp/:id", function(req, res){
         if(err){
             res.redirect("/rsvp");
         } else {
-            req.flash("success", "Successfully updated rsvp!");
             res.redirect("/rsvp/" + req.params.id);
         }
     });
@@ -125,7 +162,6 @@ router.delete("/rsvp/:id", function(req, res){
           console.log(err);
           res.redirect("/rsvp");
       } else {
-          req.flash("success", "Successfully deleted rsvp!");
           res.redirect("/rsvp");
       }
    });

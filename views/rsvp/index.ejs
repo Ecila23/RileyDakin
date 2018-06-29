@@ -1,11 +1,10 @@
 <% include ../partials/header %>
 
 <% rsvp.forEach(function(rsvp){ %>
-    <% console.log(rsvp.name) %>
     <h4><%= rsvp.name %></h4>
-   <p>
+    <p>
        <a href="/rsvp/<%= rsvp._id %>" class="button">More Info</a>
-   </p>
+    </p>
 <% }); %>
 
 <% include ../partials/footer %> 

@@ -2,7 +2,13 @@ var mongoose = require("mongoose");
 
 var RsvpSchema = new mongoose.Schema({
     name: String,
-    email: String,
+    author: {
+      id: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "User"
+      },
+      email: String
+    },
     attending: String,
     diet: String,
     song: String

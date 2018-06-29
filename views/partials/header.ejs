@@ -46,13 +46,19 @@
 		<a href="/blog" class="navbar-item">
 			Blog
 		</a>
-	
-		<a href="/rsvp" class="navbar-item">
-			View RSVPs
-		</a>
-	
-		<a href="/rsvp/new" class="navbar-item button">
-			RSVP!
-		</a>
+		
+		
+		<% if(currentUser){ %>
+			<a href="/rsvp" class="navbar-item">
+				See RSVPs
+			</a>
+			<a href="/logout" class="navbar-item button">
+				Log Out
+			</a>
+		<% } else { %>
+			<a href="/rsvp/new" class="navbar-item button">
+				RSVP!
+			</a>
+		<% } %>
 	
 	</nav>
