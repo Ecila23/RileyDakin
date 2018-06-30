@@ -1,14 +1,30 @@
 <% include ../partials/header %>
 
 <h2><%= rsvp.name %></h2>
-<p><%= rsvp.email %></p>
-<p><%= rsvp.attending %></p>
-<p><%= rsvp.diet %></p>
-<p><%= rsvp.song %></p>
+<table>
+    <tr>
+        <th>Email</th>
+        <td><a href="mailto:<%= rsvp.author.email %>"><%= rsvp.author.email %></a></td>
+    </tr>
+    <tr>
+        <th>Attending</th>
+        <td><%= rsvp.attending %></td>
+    </tr>
+    <tr>
+        <th>Diet</th>
+        <td><%= rsvp.diet %></td>
+    </tr>
+    <tr>
+        <th>Song</th>
+        <td><%= rsvp.song %></td>
+    </tr>
+</table>
 
-<a class="button" href="/rsvp/<%= rsvp._id %>/edit">Edit</a>
-<form class="delete-form" action="/rsvp/<%= rsvp._id %>?_method=DELETE" method="POST">
-    <button class="button">Delete</button>
-</form>
+<form action="/rsvp/<%= rsvp._id %>/edit" method="GET">
+    <button>Edit</button>
+</form> 
+<form action="/rsvp/<%= rsvp._id %>?_method=DELETE" method="POST">
+    <button>Delete</button>
+</form> 
 
 <% include ../partials/footer %> 
