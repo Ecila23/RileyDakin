@@ -2,63 +2,78 @@
 <html>
 <head>
 	<title>RileyDakin</title>
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-	<!--<link rel="stylesheet" type="text/css" href="index.css">-->
+	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"> -->
+	<link rel="stylesheet" type="text/css" href="stylesheets/index.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 </head>
 <body>
 	
-	<nav class="navbar" role="navigation" aria-label="dropdown navigation">
-		<a href="/" class="navbar-item">
-			<i class="fas fa-heart"></i>
-		</a>
-	
-		<a href="/lovestory" class="navbar-item">
-			Love Story
-		</a>
-	
-		<div class="navbar-item has-dropdown is-hoverable">
-		<span class="navbar-link">
-		  Useful Bits
-		</span>
-	
-		<div class="navbar-dropdown">
-		  <a href="/useful/tna" class="navbar-item">
-		    Travel & Accomodation
-		  </a>
-		  <a href="/useful/fnd" class="navbar-item">
-		    Food & Drink
-		  </a>
-		  <a href="/useful/otd" class="navbar-item">
-		    On the Day
-		  </a>
-		  <a href="/useful/faq" class="navbar-item">
-		    FAQ's
-		  </a>
-		</div>
-		</div>
-	
-		<a href="/ourcrew" class="navbar-item">
-		  Our Crew
-		</a>
-	
-		<a href="/blog" class="navbar-item">
-			Blog
-		</a>
-		
-		
-		<% if(currentUser){ %>
-			<a href="/rsvp" class="navbar-item">
-				See RSVPs
-			</a>
-			<a href="/logout" class="navbar-item button">
-				Log Out
-			</a>
-		<% } else { %>
-			<a href="/rsvp/new" class="navbar-item button">
-				RSVP!
-			</a>
-		<% } %>
-	
+	<nav>
+		<ul>
+			<li>
+				<a href="/">
+					<!-- <i class="fas fa-heart"></i> -->
+					<3
+				</a>
+			</li>
+			<li>
+				<a href="/lovestory">
+					Love Story
+				</a>
+			</li>
+			<li>
+				Useful Bits
+				<ul>
+					<li>
+						<a href="/useful/tna">
+							Travel & Accomodation
+						</a>
+					</li>
+					<li>
+						<a href="/useful/fnd">
+							Food & Drink
+						</a>
+					</li>
+					<li>
+						<a href="/useful/otd">
+							On the Day
+						</a>
+					</li>
+					<li>
+						<a href="/useful/faq">
+							FAQ's
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="/ourcrew">
+					Our Crew
+				</a>
+			</li>
+			<li>
+				<a href="/blog">
+					Blog
+				</a>
+			</li>
+			
+			<% if(currentUser){ %>
+				<li>
+					<a href="/rsvp">
+						See RSVPs
+					</a>
+				</li>
+				<li>
+					<a href="/logout">
+						Log Out
+					</a>
+				</li>
+			<% } else { %>
+				<li>
+					<a href="/rsvp/new">
+						RSVP!
+					</a>
+				</li>
+			<% } %>
+		</ul>
 	</nav>
