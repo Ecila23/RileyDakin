@@ -98,7 +98,16 @@ router.post("/rsvp", middleware.isLoggedIn,function(req, res){
     var diet = req.body.diet;
     var song = req.body.song;
     
-    var newRsvp = {name: name, email: email, attending: attending, diet: diet, song: song};
+    var newRsvp = {
+        name: name, 
+        author:{
+            id: req.user._id,
+            email: email
+        },
+        attending: attending, 
+        diet: diet, 
+        song: song
+    };
     Rsvp.create(newRsvp, function(err, newlyCreated){
         if(err){
             console.log(err);

@@ -43,6 +43,6 @@ app.use(function(req, res, next){
 
 app.use("/", indexRoutes);
 
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(3000, "localhost", function(){
    console.log("The Server Has Started!");
 });
