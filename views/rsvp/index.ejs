@@ -1,10 +1,12 @@
 <% include ../partials/header %>
 
 <% rsvp.forEach(function(rsvp){ %>
-    <h4><%= rsvp.name %></h4>
-    <p>
-       <a href="/rsvp/<%= rsvp._id %>" class="button">More Info</a>
-    </p>
+    <% if(currentUser.admin || currentUser._id.toString() === rsvp.author.id.toString()){ %>
+        <h4><%= rsvp.name %></h4>
+        <p>
+            <a href="/rsvp/<%= rsvp._id %>" class="button">More Info</a>
+        </p>
+    <% } %>
 <% }); %>
 
 <% include ../partials/footer %> 
