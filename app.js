@@ -7,7 +7,7 @@ var express         = require("express"),
     methodOverride  = require("method-override"),
     flash           = require("connect-flash"),
     User            = require("./models/user"),
-    Rsvp            = require("./models/rsvp")
+    Rsvp            = require("./models/rsvp");
 
 //requring routes
 var indexRoutes     = require("./routes/index")
@@ -26,7 +26,11 @@ app.use(flash());
 app.use(require("express-session")({
     secret: "The best names begin with an A",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        path: '/',
+        expires: (1000 * 60 * 60 * 24 * 28)
+    }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
