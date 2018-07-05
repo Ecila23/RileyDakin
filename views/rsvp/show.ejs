@@ -18,6 +18,10 @@
         <th>Song</th>
         <td><%= rsvp.song %></td>
     </tr>
+    <tr>
+        <th>Other Info</th>
+        <td><%= rsvp.other %></td>
+    </tr>    
 </table>
 
 <form action="/rsvp/<%= rsvp._id %>/edit" method="GET">

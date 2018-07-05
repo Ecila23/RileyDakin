@@ -100,6 +100,7 @@ router.post("/rsvp", middleware.isLoggedIn,function(req, res){
     var attending = req.body.attending;
     var diet = req.body.diet;
     var song = req.body.song;
+    var other = req.body.other;
     
     var newRsvp = {
         name: name, 
@@ -109,7 +110,8 @@ router.post("/rsvp", middleware.isLoggedIn,function(req, res){
         },
         attending: attending, 
         diet: diet, 
-        song: song
+        song: song,
+        other: other
     };
     Rsvp.create(newRsvp, function(err, newlyCreated){
         if(err){

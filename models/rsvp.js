@@ -11,7 +11,8 @@ var RsvpSchema = new mongoose.Schema({
     },
     attending: String,
     diet: String,
-    song: String
+    song: String,
+    other: String
 });
 
 module.exports = mongoose.model("Rsvp", RsvpSchema);
