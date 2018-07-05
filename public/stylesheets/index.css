@@ -1,3 +1,14 @@
 img {
-    max-width: 150px;
+    width: 150px;
 }
+
+iframe {
+    height:300px;
+    width:500px;
+}
+
+.map_canvas {
+    overflow:hidden;
+    background:none!important;
+    height:300px;
+    width:500px;}
