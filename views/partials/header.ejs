@@ -2,78 +2,32 @@
 <html>
 <head>
 	<title>RileyDakin</title>
-	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"> -->
 	<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 </head>
 <body>
-	
-	<nav>
-		<ul>
-			<li>
-				<a href="/">
-					<!-- <i class="fas fa-heart"></i> -->
-					<3
-				</a>
-			</li>
-			<li>
-				<a href="/lovestory">
-					Love Story
-				</a>
-			</li>
-			<li>
-				<a href="/blog">
-					Blog
-				</a>
-			</li>
-			<li>
-				<a href="/ourcrew">
-					Our Crew
-				</a>
-			</li>
-			<li>
-				Useful Bits
-				<ul>
-					<li>
-						<a href="/useful/tna">
-							Travel & Accomodation
-						</a>
-					</li>
-					<li>
-						<a href="/useful/fnd">
-							Food & Drink
-						</a>
-					</li>
-					<li>
-						<a href="/useful/otd">
-							On the Day
-						</a>
-					</li>
-					<li>
-						<a href="/useful/faq">
-							FAQ's
-						</a>
-					</li>
+	<nav class="nav">
+		<ul class="nav__list">
+			<li class="nav__item"><a class="nav__link" href="/"> <3 </a></li>
+			<li class="nav__item"><a class="nav__link" href="/lovestory">Love Story</a></li>
+			<li class="nav__item"><a class="nav__link" href="/blog">Blog</a></li>
+			<li class="nav__item"><a class="nav__link" href="/ourcrew">Our Crew</a></li>
+			<li class="nav__item"><span class="nav__link">Useful Bits</span>
+				<ul class="nav__list nav__list--sub">
+					<li class="nav__item nav__item--sub"><a class="nav__link nav__link--sub" href="/useful/tna"> Travel & Accomodation </a> </li>
+					<li class="nav__item nav__item--sub"><a class="nav__link nav__link--sub" href="/useful/fnd"> Food & Drink </a></li>
+					<li class="nav__item nav__item--sub"><a class="nav__link nav__link--sub" href="/useful/otd"> On the Day </a></li>
+					<li class="nav__item nav__item--sub"><a class="nav__link nav__link--sub" href="/useful/faq"> FAQ </a></li>
 				</ul>
 			</li>
-			
+		</ul>
+		<ul class="nav__list nav__list--rsvp">
 			<% if(currentUser){ %>
-				<li>
-					<a href="/rsvp">
-						See RSVPs
-					</a>
-				</li>
-				<li>
-					<a href="/logout">
-						Log Out
-					</a>
-				</li>
+				<li class="nav__item nav__item--rsvp"><a class="nav__link nav__link--rsvp" href="/rsvp"> View RSVP </a></li>
+				<li class="nav__item nav__item--rsvp"><a class="nav__link nav__link--rsvp" href="/logout"> Log Out </a></li>
 			<% } else { %>
-				<li>
-					<a href="/rsvp/new">
-						RSVP!
-					</a>
-				</li>
+				<li class="nav__item nav__item--rsvp button"><a class="nav__link nav__link--rsvp" href="/rsvp/new">Log In and RSVP!</a></li>
 			<% } %>
 		</ul>
 	</nav>
+
