@@ -1,10 +1,17 @@
 <% include ./partials/header %> 
 
-<form action="/register" method="POST">
-    <input type="email" name="username" placeholder="Email">
-    <input type="password" name="password" placeholder="Password">
-    <button>Sign Up</button>
+<form class="auth-form" action="/register" method="POST">
+    <h1 class="auth-form__heading">Register</h1>
+
+    <label class="auth-form__label" for="auth-form__input--email">Email</label>
+    <input class="auth-form__input" id="auth-form__input--email" type="email" name="username" placeholder="example@email.com">
+
+    <label class="auth-form__label" for="auth-form__input--password">Password </label>
+    <input class="auth-form__input" id="auth-form__input--password" type="password" name="password" placeholder="********">
+    
+    <button class="auth-form__button">Sign Up</button>
+
+    <a class="auth-form__link" href="/login">Already registered? Log in here...</a>
 </form>
-<a href="/login">Already registered? Log in here...</a>
 
 <% include ./partials/footer %> 

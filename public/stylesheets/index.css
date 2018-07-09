@@ -14,6 +14,10 @@ a {
     text-decoration: none;
 }
 
+button, input, textarea {
+    font-family: serif;
+}
+
 .nav {
     display: flex;
     justify-content: space-between;
@@ -73,22 +77,53 @@ a {
     top: 100%;
 }
 
-.nav__list--rsvp {
+.nav__list--rsvp {}
 
+.nav__item--rsvp {}
+
+.nav__link--rsvp {}
+
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 30rem;
+    margin: 5rem auto;
+    padding: 5rem;
+    background-color: silver;
+    border-radius: 1rem;
 }
 
-.nav__item--rsvp {
-
+.auth-form__heading {
+    margin: 0 auto;
+    font-size: 3rem;
 }
 
-.nav__link--rsvp {
-
+.auth-form__label {
+    font-size: 2rem;
 }
 
-.button {
-
+.auth-form__input {
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    font-size: 1.8rem;
+    border-radius: 0.5rem;
+    border-width: 0;
 }
 
+.auth-form__button {
+    display: inline-block;
+    margin: 0 auto 1rem;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    border-width: 0;
+}
+
+.auth-form__link {
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
 
 img {
     width: 150px;
